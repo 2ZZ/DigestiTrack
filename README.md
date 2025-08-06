@@ -46,8 +46,8 @@ A beautiful, accessible, and trippy web application for tracking digestive healt
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/fart-tracker2.git
-   cd fart-tracker2
+   git clone https://github.com/2ZZ/DigestiTrack.git
+   cd DigestiTrack
    ```
 
 2. **Install dependencies**
@@ -79,7 +79,7 @@ The built files will be in the `dist/` directory.
 
 This project is configured with GitHub Actions for automatic deployment to GitHub Pages. Simply push to the `main` branch and your app will be deployed automatically!
 
-**Live Demo**: [https://yourusername.github.io/fart-tracker2](https://yourusername.github.io/fart-tracker2)
+**Live Demo**: [https://2zz.github.io/DigestiTrack](https://2zz.github.io/DigestiTrack)
 
 ### Manual Deployment
 
