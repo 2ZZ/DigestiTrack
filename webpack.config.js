@@ -1,9 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-// Check if we're building for GitHub Pages
-const isGitHubPages =
-  process.env.GITHUB_PAGES === "true" || process.env.NODE_ENV === "production";
+// Check if we're building for GitHub Pages or production
+const isProduction = process.env.NODE_ENV === "production";
+const isGitHubPages = process.env.GITHUB_PAGES === "true" || isProduction;
 
 module.exports = {
   entry: "./src/index.tsx",
