@@ -1,4 +1,4 @@
-# 🌈 Psychedelic Fart Tracker
+# 🌈 DigestiTrack
 
 A beautiful, accessible, and trippy web application for tracking digestive health with a vibrant psychedelic UI that's fully WCAG compliant! 🚀✨
 

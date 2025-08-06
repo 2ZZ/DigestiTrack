@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+import React, { useState } from "react";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 
 const AuthScreen: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,13 +11,15 @@ const AuthScreen: React.FC = () => {
         <div className="auth-particles"></div>
         <div className="auth-glow"></div>
       </div>
-      
+
       <div className="auth-container">
         <div className="auth-header">
           <div className="auth-logo">
             <div className="logo-icon">🩺</div>
             <h1 className="logo-title">DigestiTrack</h1>
-            <p className="logo-subtitle">Professional Digestive Health Monitor</p>
+            <p className="logo-subtitle">
+              Professional Digestive Health Monitor
+            </p>
           </div>
         </div>
 

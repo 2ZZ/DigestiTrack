@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { login, isLoading } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
       return;
     }
 
     const success = await login(email, password);
     if (!success) {
-      setError('Login failed. Please try again.');
+      setError("Login failed. Please try again.");
     }
   };
 
@@ -30,11 +30,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
     <div className="auth-form-container">
       <div className="auth-form">
         <h2 className="auth-form-title">Welcome Back</h2>
-        <p className="auth-form-subtitle">Sign in to your digestive health tracker</p>
-        
+        <p className="auth-form-subtitle">
+          Sign in to your digestive health tracker
+        </p>
+
         <form onSubmit={handleSubmit} className="auth-form-element">
           <div className="form-field">
-            <label htmlFor="email" className="form-label">Email Address</label>
+            <label htmlFor="email" className="form-label">
+              Email Address
+            </label>
             <input
               type="email"
               id="email"
@@ -48,7 +52,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
           </div>
 
           <div className="form-field">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -63,20 +69,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
 
           {error && <div className="form-error">{error}</div>}
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="auth-button primary"
             disabled={isLoading}
           >
-            {isLoading ? 'Signing In...' : 'Sign In'}
+            {isLoading ? "Signing In..." : "Sign In"}
           </button>
         </form>
 
         <div className="auth-switch">
           <p className="auth-switch-text">
-            Don't have an account?{' '}
-            <button 
-              type="button" 
+            Don't have an account?{" "}
+            <button
+              type="button"
               className="auth-link-button"
               onClick={onSwitchToRegister}
               disabled={isLoading}
@@ -88,8 +94,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
 
         <div className="auth-privacy">
           <p className="auth-privacy-text">
-            🔒 Your data is encrypted and HIPAA-compliant. 
-            We never share your personal health information.
+            🔒 Your data is encrypted and HIPAA-compliant. We never share your
+            personal health information.
           </p>
         </div>
       </div>
