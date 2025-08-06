@@ -7,11 +7,17 @@ const AuthScreen: React.FC = () => {
 
   return (
     <div className="auth-screen">
+      <div className="auth-background">
+        <div className="auth-particles"></div>
+        <div className="auth-glow"></div>
+      </div>
+      
       <div className="auth-container">
         <div className="auth-header">
-          <div className="logo">
-            <h1>🩺 DigestiTrack</h1>
-            <p>Professional Digestive Health Tracking</p>
+          <div className="auth-logo">
+            <div className="logo-icon">🩺</div>
+            <h1 className="logo-title">DigestiTrack</h1>
+            <p className="logo-subtitle">Professional Digestive Health Monitor</p>
           </div>
         </div>
 
@@ -24,23 +30,23 @@ const AuthScreen: React.FC = () => {
         </div>
 
         <div className="auth-features">
-          <div className="feature">
-            <span className="feature-icon">📊</span>
-            <div>
+          <div className="feature-card">
+            <div className="feature-icon">📊</div>
+            <div className="feature-content">
               <h4>Medical-Grade Tracking</h4>
               <p>Bristol Stool Chart and clinical symptom logging</p>
             </div>
           </div>
-          <div className="feature">
-            <span className="feature-icon">🔒</span>
-            <div>
+          <div className="feature-card">
+            <div className="feature-icon">🔒</div>
+            <div className="feature-content">
               <h4>HIPAA Compliant</h4>
               <p>Your health data is secure and encrypted</p>
             </div>
           </div>
-          <div className="feature">
-            <span className="feature-icon">👩‍⚕️</span>
-            <div>
+          <div className="feature-card">
+            <div className="feature-icon">👩‍⚕️</div>
+            <div className="feature-content">
               <h4>Healthcare Integration</h4>
               <p>Share reports with your healthcare provider</p>
             </div>

@@ -27,67 +27,71 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
   };
 
   return (
-    <div className="auth-form">
-      <h2>Welcome Back</h2>
-      <p className="auth-subtitle">Sign in to your digestive health tracker</p>
-      
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-            disabled={isLoading}
-          />
-        </div>
+    <div className="auth-form-container">
+      <div className="auth-form">
+        <h2 className="auth-form-title">Welcome Back</h2>
+        <p className="auth-form-subtitle">Sign in to your digestive health tracker</p>
+        
+        <form onSubmit={handleSubmit} className="auth-form-element">
+          <div className="form-field">
+            <label htmlFor="email" className="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              className="form-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+              disabled={isLoading}
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-            disabled={isLoading}
-          />
-        </div>
+          <div className="form-field">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              className="form-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+              disabled={isLoading}
+            />
+          </div>
 
-        {error && <div className="error-message">{error}</div>}
+          {error && <div className="form-error">{error}</div>}
 
-        <button 
-          type="submit" 
-          className="auth-button primary"
-          disabled={isLoading}
-        >
-          {isLoading ? 'Signing In...' : 'Sign In'}
-        </button>
-      </form>
-
-      <div className="auth-switch">
-        <p>
-          Don't have an account?{' '}
           <button 
-            type="button" 
-            className="link-button"
-            onClick={onSwitchToRegister}
+            type="submit" 
+            className="auth-button primary"
             disabled={isLoading}
           >
-            Create Account
+            {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
-        </p>
-      </div>
+        </form>
 
-      <div className="privacy-notice">
-        <p>
-          🔒 Your data is encrypted and HIPAA-compliant. 
-          We never share your personal health information.
-        </p>
+        <div className="auth-switch">
+          <p className="auth-switch-text">
+            Don't have an account?{' '}
+            <button 
+              type="button" 
+              className="auth-link-button"
+              onClick={onSwitchToRegister}
+              disabled={isLoading}
+            >
+              Create Account
+            </button>
+          </p>
+        </div>
+
+        <div className="auth-privacy">
+          <p className="auth-privacy-text">
+            🔒 Your data is encrypted and HIPAA-compliant. 
+            We never share your personal health information.
+          </p>
+        </div>
       </div>
     </div>
   );
