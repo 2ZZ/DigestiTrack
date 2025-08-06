@@ -35,7 +35,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     // Set public path for GitHub Pages (repository name)
-    publicPath: isGitHubPages ? "/DigestiTrack/" : "/",
+    publicPath: "/DigestiTrack/",
   },
   devServer: {
     static: path.join(__dirname, "dist"),

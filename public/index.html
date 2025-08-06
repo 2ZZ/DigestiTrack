@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigestiTrack - Professional Digestive Health Monitor</title>
+    <style>
+        /* Fallback styles in case CSS doesn't load */
+        body {
+            font-family: system-ui, sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        #root {
+            min-height: 100vh;
+        }
+        .loading-fallback {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .loading-fallback h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .loading-fallback p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Fallback content if React doesn't load -->
+        <div class="loading-fallback">
+            <h1>DigestiTrack</h1>
+            <p>Professional Digestive Health Monitor</p>
+            <p>Loading application...</p>
+            <p>If this message persists, please check the browser console for errors.</p>
+        </div>
+    </div>
 </body>
 </html>

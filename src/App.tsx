@@ -9,12 +9,16 @@ import { BarChart3, Calendar, Activity, AlertTriangle, TrendingUp, Brain } from 
 import './globals.css';
 
 const MainApp: React.FC = () => {
+  console.log("DigestiTrack: MainApp component mounting...");
   const { user, isLoading, logout } = useAuth();
   const [incidents, setIncidents] = useState<IncidentEntry[]>([]);
   const [foods, setFoods] = useState<FoodIntake[]>([]);
   const [showIncidentLogger, setShowIncidentLogger] = useState(false);
 
+  console.log("DigestiTrack: Auth state - user:", user, "isLoading:", isLoading);
+
   useEffect(() => {
+    console.log("DigestiTrack: loadUserData effect triggered, user:", user);
     loadUserData();
   }, [user]);
 
