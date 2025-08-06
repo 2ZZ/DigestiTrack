@@ -1,6 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+// Check if we're building for GitHub Pages
+const isGitHubPages =
+  process.env.GITHUB_PAGES === "true" || process.env.NODE_ENV === "production";
+
 module.exports = {
   entry: "./src/index.tsx",
   resolve: {
@@ -30,10 +34,14 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    // Set public path for GitHub Pages (repository name)
+    publicPath: isGitHubPages ? "/fart-tracker2/" : "/",
   },
   devServer: {
     static: path.join(__dirname, "dist"),
     compress: true,
     port: 3000,
+    // Enable history API fallback for SPA routing
+    historyApiFallback: true,
   },
 };
