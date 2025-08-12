@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import AuthScreen from "./components/Auth/AuthScreen";
 import IncidentLogger from "./components/Logging/IncidentLogger";
+import PoopDropGame from "./components/Auth/PoopDropGame";
 import { IncidentEntry, FoodIntake } from "./types";
 import { Button } from "./components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "./components/ui/card";
@@ -20,9 +21,20 @@ const MainApp: React.FC = () => {
   const [incidents, setIncidents] = useState<IncidentEntry[]>([]);
   const [foods, setFoods] = useState<FoodIntake[]>([]);
   const [showIncidentLogger, setShowIncidentLogger] = useState(false);
+  const [showGame, setShowGame] = useState(false);
 
   useEffect(() => {
     loadUserData();
+  }, [user]);
+
+  // Auto-show game on desktop after a delay
+  useEffect(() => {
+    if (user && window.innerWidth >= 1024) {
+      const timer = setTimeout(() => {
+        setShowGame(true);
+      }, 5000); // Show game after 5 seconds on desktop
+      return () => clearTimeout(timer);
+    }
   }, [user]);
 
   const loadUserData = () => {
@@ -391,6 +403,27 @@ const MainApp: React.FC = () => {
 
         <div className="tracker-panel professional-panel">
           <h2 className="panel-title">🧠 Health Insights</h2>
+
+          {/* Mini Game Section */}
+          <div className="game-section">
+            <div className="game-header">
+              <h3>🎮 Take a Break - Play Poop Drop!</h3>
+              <button
+                className="game-toggle-btn compact"
+                onClick={() => setShowGame(!showGame)}
+              >
+                {showGame ? "Hide Game" : "Show Game"} 💩
+              </button>
+            </div>
+            {showGame && (
+              <PoopDropGame
+                isVisible={true}
+                onClose={() => setShowGame(false)}
+                autoStart={true}
+                compact={true}
+              />
+            )}
+          </div>
 
           <div className="health-insights">
             {incidents.length < 3 ? (

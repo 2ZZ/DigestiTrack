@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import PoopDropGame from "./PoopDropGame";
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
@@ -9,7 +10,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showGame, setShowGame] = useState(false);
   const { login, isLoading } = useAuth();
+
+  // Auto-show game on desktop
+  React.useEffect(() => {
+    const isDesktop = window.innerWidth >= 1024;
+    if (isDesktop) {
+      const timer = setTimeout(() => {
+        setShowGame(true);
+      }, 2000); // Show game after 2 seconds on desktop
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,7 +111,24 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
             personal health information.
           </p>
         </div>
+
+        <button
+          type="button"
+          className="game-toggle-btn"
+          onClick={() => setShowGame(true)}
+          disabled={isLoading}
+          aria-label="Play Poop Drop mini-game while waiting"
+        >
+          🎮 Play Poop Drop Game 💩
+        </button>
       </div>
+
+      <PoopDropGame
+        isVisible={showGame}
+        onClose={() => setShowGame(false)}
+        autoStart={window.innerWidth >= 1024}
+        compact={window.innerWidth < 1024}
+      />
     </div>
   );
 };
